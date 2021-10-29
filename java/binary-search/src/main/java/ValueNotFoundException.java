@@ -1,6 +1,8 @@
-class ValueNotFoundException extends Exception {
+package com.peterkingswell.exercism.java;
 
-    ValueNotFoundException(String message) {
-        super(message);
-    }
+public class ValueNotFoundException extends Exception {
+
+  ValueNotFoundException(String message) {
+    super(message);
+  }
 }
