@@ -28,7 +28,7 @@ gradle/**
 build/
 .exercism/
 **/*gradle*
-**/*HELP.md*
-**/*README.md*
+# **/*HELP.md*
+# **/*README.md*
 gradlew
 build.gradle
