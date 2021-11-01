@@ -1,22 +1,3 @@
-/*
-
-ABC     AD
-DEF =>  BE
-        CF
-
-stringbuilder s
-cols = max length of all strings
-rows = number of strings
-for j in 0 to 2 (cols-1)
-  for i in 0 to 1 (rows-1)
-    append j,i
-  append \n
-
-AD
-BE
-CF
-
-*/
 import java.util.ArrayList;
 public class Transpose {
     public String transpose(String input) {
@@ -44,17 +25,43 @@ public class Transpose {
             grid.add(spaceBuilder.toString());
         }
 
-        StringBuilder sb = new StringBuilder();
-        String prefix = "";
+        var transposedGrid = new ArrayList<StringBuilder>();
         for (int i = 0; i < maxLen; i++) {
-            sb.append(prefix);
-            prefix = "\n";
-            for (int j = 0; j < grid.size(); j++) {
-                String s = grid.get(j).toString();
-                char c = s.charAt(i);
-                sb.append(c);
+            var col = new StringBuilder(maxLen);
+            transposedGrid.add(col);
+            // for (var row : grid)
+            //     col.append(row.charAt(i));
+            boolean haveSeenNonWs = false;
+            for (int j = grid.size() - 1; j > -1; j--) {
+                var row = grid.get(j);
+                char c = row.charAt(j);
+                if (c != ' ')
+                    haveSeenNonWs = true;
+
+                if (!haveSeenNonWs && c == ' ')
+                    continue;
             }
         }
+
+
+
+        StringBuilder sb = new StringBuilder();
+        String prefix = "";
+        for (var tranRow : transposedGrid) {
+            sb.append(prefix);
+            prefix = "\n";
+            sb.append(tranRow.toString());
+            // for (int i = 0; i < grid.size(); j++) {
+            //     String s = grid.get(j).toString();
+            //     char c = s.charAt(i);
+            //     String remainingChars = s.substring(i);
+                // boolean allSpaces = true;
+                // for (int k = 1; k < remainingChars.length(); k++)
+                //     if (remainingChars.charAt(k) != ' ')
+                //         allSpaces = false;
+
+                // if (!allSpaces)
+            }
 
         System.err.println(input + " transposed is " + sb.toString());
         return sb.toString();

@@ -1,8 +1,5 @@
-package com.peterkingswell.exercism.java;
-
-public class ValueNotFoundException extends Exception {
-
-  ValueNotFoundException(String message) {
-    super(message);
-  }
+public class ValueNotFoundException extends RuntimeException {
+    public ValueNotFoundException(String err) {
+        super(err);
+    }
 }
