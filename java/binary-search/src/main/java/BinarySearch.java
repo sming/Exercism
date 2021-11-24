@@ -1,37 +1,42 @@
 import java.util.List;
 
 public class BinarySearch {
-  private final List<Integer> input;
 
-  public BinarySearch(List<Integer> input) {
-    this.input = input;
+  private final List<Integer> list;
+
+  public BinarySearch(List<Integer> list) {
+    this.list = list;
   }
 
-  public int indexOf(int query) throws ValueNotFoundException {
-    if (input == null || input.size() == 0)
+  public int indexOf(int target) {
+    if (list == null || list.isEmpty())
       throw new ValueNotFoundException("Value not in array");
 
-    return findIndexOf(query, 0, input.size() - 1);
+    return indexOf(target, 0, list.size() - 1);
   }
 
-  private int findIndexOf(int query, int startIdx, int endIdx)
-      throws ValueNotFoundException {
-    int midwayIdx = startIdx + Math.abs((endIdx - startIdx) / 2);
-    int midway = input.get(midwayIdx);
+  private int indexOf(int target, int startIdx, int endIdx) {
+    int midIdx = (startIdx + endIdx) / 2;
 
-    if (midway == query) return midwayIdx;
-    else if (input.get(startIdx) == query) return startIdx;
-    else if (input.get(endIdx) == query) return endIdx;
+    var midValue = list.get(midIdx);
+    if (midValue == target)
+      return midIdx;
+    else if (list.get(startIdx) == target)
+      return startIdx;
+    else if (list.get(endIdx) == target)
+      return endIdx;
 
-    if (startIdx > endIdx)
-        throw new ValueNotFoundException("Value not in array");
+    if (startIdx >= endIdx || endIdx <= startIdx)
+      throw new ValueNotFoundException("Value not in array");
 
-    if (midwayIdx > startIdx && midway > query)
-      return findIndexOf(query, startIdx, midwayIdx -1);
-    else if (midwayIdx > startIdx && midway < query)
-      return findIndexOf(query, midwayIdx, endIdx);
+    if (endIdx - startIdx <= 1)
+      throw new ValueNotFoundException("Value not in array");
 
-
-    throw new ValueNotFoundException("Value not in array");
+    if (midValue > target)
+      return indexOf(target, startIdx, midIdx);
+    else if (midValue < target)
+      return indexOf(target, midIdx, endIdx);
+    else
+      throw new ValueNotFoundException("Value not in array");
   }
 }

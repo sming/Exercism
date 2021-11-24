@@ -2,19 +2,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.junit.Test;
 
-public class BinarySearchTest {
+public class BinarySearchTestV1 {
 
     //@Ignore("Remove to run test")
     @Test
     public void findsAValueInAnArrayWithOneElement() throws ValueNotFoundException {
         List<Integer> listOfUnitLength = Collections.singletonList(6);
 
-        BinarySearch search = new BinarySearch(listOfUnitLength);
+        BinarySearchV1 search = new BinarySearchV1(listOfUnitLength);
 
         assertEquals(0, search.indexOf(6));
     }
@@ -26,7 +27,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 4, 6, 8, 9, 11)
         );
 
-        BinarySearch search = new BinarySearch(sortedList);
+        BinarySearchV1 search = new BinarySearchV1(sortedList);
 
         assertEquals(3, search.indexOf(6));
     }
@@ -38,7 +39,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 4, 6, 8, 9, 11)
         );
 
-        BinarySearch search = new BinarySearch(sortedList);
+        BinarySearchV1 search = new BinarySearchV1(sortedList);
 
         assertEquals(0, search.indexOf(1));
     }
@@ -50,7 +51,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 4, 6, 8, 9, 11)
         );
 
-        BinarySearch search = new BinarySearch(sortedList);
+        BinarySearchV1 search = new BinarySearchV1(sortedList);
 
         assertEquals(6, search.indexOf(11));
     }
@@ -62,7 +63,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634)
         );
 
-        BinarySearch search = new BinarySearch(sortedListOfOddLength);
+        BinarySearchV1 search = new BinarySearchV1(sortedListOfOddLength);
 
         assertEquals(9, search.indexOf(144));
     }
@@ -74,7 +75,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377)
         );
 
-        BinarySearch search = new BinarySearch(sortedListOfEvenLength);
+        BinarySearchV1 search = new BinarySearchV1(sortedListOfEvenLength);
 
         assertEquals(5, search.indexOf(21));
     }
@@ -86,7 +87,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 4, 6, 8, 9, 11)
         );
 
-        BinarySearch search = new BinarySearch(sortedList);
+        BinarySearchV1 search = new BinarySearchV1(sortedList);
 
         ValueNotFoundException expected =
             assertThrows(
@@ -103,7 +104,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 4, 6, 8, 9, 11)
         );
 
-        BinarySearch search = new BinarySearch(sortedList);
+        BinarySearchV1 search = new BinarySearchV1(sortedList);
 
         ValueNotFoundException expected =
             assertThrows(
@@ -120,7 +121,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 3, 4, 6, 8, 9, 11)
         );
 
-        BinarySearch search = new BinarySearch(sortedList);
+        BinarySearchV1 search = new BinarySearchV1(sortedList);
 
         ValueNotFoundException expected =
             assertThrows(
@@ -135,7 +136,7 @@ public class BinarySearchTest {
     public void nothingIsFoundInAnEmptyArray() throws ValueNotFoundException {
         List<Integer> emptyList = Collections.emptyList();
 
-        BinarySearch search = new BinarySearch(emptyList);
+        BinarySearchV1 search = new BinarySearchV1(emptyList);
 
         ValueNotFoundException expected =
             assertThrows(
@@ -152,7 +153,7 @@ public class BinarySearchTest {
                 Arrays.asList(1, 2)
         );
 
-        BinarySearch search = new BinarySearch(sortedList);
+        BinarySearchV1 search = new BinarySearchV1(sortedList);
 
         ValueNotFoundException expected =
             assertThrows(
